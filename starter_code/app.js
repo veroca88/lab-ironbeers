@@ -14,21 +14,23 @@ app.use(express.static(path.join(__dirname, 'public')));
 // add the routes here
 app.get('/', (req, res) => res.render('index'));
 
-app.get('/beers', (req, res) => res.render('beers'));
 
-app.get('/random-beers', (req, res) => res.render('random-beers'))
+// app.get('/beers', (req, res) => res.render('beers'));
 
-
-// app.get('/', (req, res) => {
-//     res.sendFile(__dirname + '/views/htmls/home.html');
-// });
-
-// app.get('/beers', (req, res) => {
-//     res.sendFile(__dirname + '/views/htmls/beers.html');
-// });
-
-// app.get('/random-beers', (req, res) => {
-//     res.sendFile(__dirname + "/views/htmls/random-beers.html");
-// });
-
-app.listen(3000, () => console.log('🏃‍ on port 3000'));
+app.get('/beers', (req, res) => {
+        punkAPI
+          .getBeers()
+          .then(beers => {
+                //if you wanna check
+                console.log(beers.length)
+                //here we're passing beers object to beers.hbs, we should be able to iterate in beers.hbs
+                res.render('beers', {beers});
+              })
+              .catch(error => console.log(error));
+          });
+        
+        // app.get('/random-beers', (req, res) => res.render('random-beers'))
+        
+        
+        
+        app.listen(3000, () => console.log('🏃‍ on port 3000'));
