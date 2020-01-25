@@ -1,6 +1,15 @@
-<section>
+
+<section class="flex-container">
+    {{#each beers}}
+    <div class="container">
+    <img src={{this.image_url}} style="width: 100px;" alt="">
     <ul>
-        {{#each beers}}
-        {{/each }}
+        <li><b>name:</b> {{this.name}}</li>
+        <li><b>id:</b> {{this.id}}</li>
+        <li><b>tagline:</b> {{this.tagline}}</li>
+        <li><b>description:</b> {{this.description}}</li>
+        <li><b>brewers_tips:</b> {{this.brewers_tips}}</li>
     </ul>
+    </div>
+    {{/each }}
 </section>

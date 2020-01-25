@@ -24,7 +24,7 @@ app.get('/beers', (req, res) => {
                 //if you wanna check
                 console.log(beers.length)
                 //here we're passing beers object to beers.hbs, we should be able to iterate in beers.hbs
-                res.render('beers', {beers});
+                res.render('beers', { beers });
               })
               .catch(error => console.log(error));
           });
